@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10101a">
+
+    <title>Un message spécial pour vous</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #10101a, #28203c, #4a2440);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            text-align: center;
+        }
+
+        .heart {
+            font-size: 45px;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            50% { transform: scale(1.15); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #e4dce9;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .video-box {
+            background: #000;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        video {
+            display: block;
+            width: 100%;
+            max-height: 70vh;
+            background: black;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        button {
+            border: none;
+            border-radius: 30px;
+            padding: 13px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .sound-btn {
+            background: #e8b45e;
+            color: #201626;
+        }
+
+        .play-btn {
+            background: white;
+            color: #201626;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* SECTION PLUS D'INFORMATIONS */
+
+        .more-info {
+            margin-top: 40px;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .info-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .more-info h2 {
+            font-size: 23px;
+            margin-bottom: 12px;
+            color: #e8b45e;
+        }
+
+        .more-info p {
+            color: #e4dce9;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border-radius: 30px;
+            background: #25D366;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1da851;
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-btn span {
+            font-size: 20px;
+        }
+
+        .phone-number {
+            margin-top: 18px;
+            color: #e8b45e !important;
+            font-size: 14px !important;
+            margin-bottom: 0 !important;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-bottom: 15px;
+            font-size: 13px;
+            color: #c9b8ce;
+        }
+
+        @media(max-width: 500px) {
+            h1 {
+                font-size: 25px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .more-info h2 {
+                font-size: 20px;
+            }
+
+            .whatsapp-btn {
+                font-size: 13px;
+                padding: 14px 18px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+   
+
+    <!-- VIDEO -->
+
+    <div class="video-box">
+
+        <video id="myVideo"
+               autoplay
+               muted
+               playsinline
+               preload="auto"
+               controls>
+
+            <source src="video_amelioree_tournee (1).mp4" type="video/mp4">
+
+            Votre navigateur ne supporte pas la vidéo.
+
+        </video>
+
+    </div>
+
+    <!-- BOUTONS VIDEO -->
+
+    <div class="buttons">
+
+        <button class="sound-btn" onclick="toggleSound()">
+            🔊 Activer le son
+        </button>
+
+        <button class="play-btn" onclick="playVideo()">
+            ▶ Revoir la vidéo
+        </button>
+
+    </div>
+
+
+    <!-- PLUS D'INFORMATIONS -->
+
+    <div class="more-info">
+
+        <div class="info-icon">💬</div>
+
+        <h2>Plus d'informations ?</h2>
+
+      
+
+        <a href="https://wa.me/221782688842"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="whatsapp-btn">
+
+            <span>📱</span>
+            Nous contacter sur WhatsApp
+
+        </a>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+  
+</div>
+
+
+<script>
+
+    const video = document.getElementById("myVideo");
+
+    // LECTURE AUTOMATIQUE
+
+    window.addEventListener("load", function() {
+
+        video.muted = true;
+
+        video.play().catch(function(error) {
+            console.log("Lecture automatique bloquée :", error);
+        });
+
+    });
+
+
+    // ACTIVER OU DESACTIVER LE SON
+
+    function toggleSound() {
+
+        if (video.muted) {
+
+            video.muted = false;
+            video.volume = 1;
+
+            video.play().catch(function() {});
+
+            document.querySelector(".sound-btn").innerHTML =
+                "🔇 Couper le son";
+
+        } else {
+
+            video.muted = true;
+
+            document.querySelector(".sound-btn").innerHTML =
+                "🔊 Activer le son";
+
+        }
+
+    }
+
+
+    // REVOIR LA VIDEO
+
+    function playVideo() {
+
+        video.currentTime = 0;
+
+        video.play();
+
+    }
+
+
+    // GENERER LE QR CODE
+
+    // Le QR code doit pointer vers l'adresse publique du site.
+    const qrContainer = document.getElementById("qrcode");
+
+    // Génération du QR code disponible si la section est ajoutée.
+    if (qrContainer) {
+
+        const qr = new QRCode(qrContainer, {
+            text: window.location.href,
+            width: 220,
+            height: 220,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
